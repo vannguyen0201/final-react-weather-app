@@ -3,7 +3,7 @@ h1 {
     font-weight: 900;
   }
   
-  h2, .date {
+  h2 {
     font-weight: 700;
     margin-left: 30px;
   }
@@ -52,8 +52,12 @@ h1 {
     background: #132238;
   }
   
+  .App li {
+      list-style: none;
+  }
+
   .App #icon {
-    width: 70px;
+    width: 100px;
     margin: 10px 10px;
   }
   
