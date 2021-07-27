@@ -1,7 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function Weather(){
+export default function Weather(props){
+    const [weatherData, setWeatherData] = useState({ready: false});
+
+    function handleResponse(response) {
+        setWeatherData({
+            ready: true,
+            temperature: response.data.main.temp,
+            city: response.data.name,
+            country: response.data.sys.country,
+            wind: response.data.wind.speed,
+            feelsLike: response.data.main.feels_like,
+            humidity: response.data.main.humidity,
+            icon: "https://www.pikpng.com/pngl/b/190-1909381_weather-symbols-png-weather-symbol-vector-free-clipart.png",
+            description: response.data.weather[0].description,
+            date: "Tuesday, 27 July 2021"
+        })
+    }
+
+    if (weatherData.ready) {
     return (
         <div className="card">
           <div className="card-body">
@@ -33,28 +51,28 @@ export default function Weather(){
                 </div>
                 </div>
                 <h2 className="fw-bold">
-              <span id="city">Melboune</span>, <span id="country">AU</span>
+              <span id="city">{weatherData.city}</span>, <span id="country">{weatherData.country}</span>
             </h2>
             <ul>
                 <li>
-                    Tuesday, 27 July 2021
+                    {weatherData.date}
                 </li>
-                <li>
-                    Mostly Cloudly
+                <li className="text-capitalize">
+                    {weatherData.description}
                 </li>
             </ul>
             <div className="row">
               <div className="col-6">
                 <img
-                  src="https://www.pikpng.com/pngl/b/190-1909381_weather-symbols-png-weather-symbol-vector-free-clipart.png"
-                  alt=""
+                  src={weatherData.icon}
+                  alt={weatherData.description}
                   className="float-start"
                   id="icon"
                 />
-                <div className="float-start temperature-units">
-                  <span id="temperature">24</span>
+                <div className="float-start">
+                  <span id="temperature">{Math.round(weatherData.temperature)}</span>
                   <span id="units">
-                    <span href="#" id="celcius" className="active">
+                    <span href="#" id="celcius">
                       °C
                     </span>
                     |
@@ -66,16 +84,21 @@ export default function Weather(){
               </div>
               <div className="col-6">
               <div id="indicators">
-                <strong>Feels like</strong>:{" "}
-                <span id="feels-like"></span>°C
+                <strong>Feels like</strong>: {Math.round(weatherData.feelsLike)}°C
                 <br />
-                <strong>Humidity</strong>: <span id="humidity"></span>%
+                <strong>Humidity</strong>: <span>{weatherData.humidity}</span>%
                 <br />
-                <strong>Wind </strong>: <span id="wind"></span>km/h
+                <strong>Wind </strong>: <span>{Math.round(weatherData.wind)}</span>km/h
                 </div>
               </div>
             </div>
           </div>
         </div>
     )
+    } else {
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&units=metric&appid=ae3ffbb2ba5fd172289cc56d929ac85e`;
+        axios.get(apiUrl).then(handleResponse);
+
+        return "Loading..."
+    }
 }
