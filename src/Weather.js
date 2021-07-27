@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 
 export default function Weather(props){
@@ -15,7 +16,7 @@ export default function Weather(props){
             humidity: response.data.main.humidity,
             icon: "https://www.pikpng.com/pngl/b/190-1909381_weather-symbols-png-weather-symbol-vector-free-clipart.png",
             description: response.data.weather[0].description,
-            date: "Tuesday, 27 July 2021"
+            date: new Date(response.data.dt * 1000)
         })
     }
 
@@ -38,7 +39,7 @@ export default function Weather(props){
                             />
                         </div>
                         </div>
-                        <div class="col-2">
+                        <div className="col-2">
                         <input
                             type="submit"
                             className="btn btn-primary"
@@ -55,7 +56,7 @@ export default function Weather(props){
             </h2>
             <ul>
                 <li>
-                    {weatherData.date}
+                    <FormattedDate date={weatherData.date} />
                 </li>
                 <li className="text-capitalize">
                     {weatherData.description}
