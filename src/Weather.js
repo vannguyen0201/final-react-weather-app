@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+import WeatherData from "./WeatherData";
 import axios from "axios";
 
 export default function Weather(props){
     const [weatherData, setWeatherData] = useState({ready: false});
+    const [city, setCity] = useState(props.defaultCity);
 
     function handleResponse(response) {
         setWeatherData({
@@ -20,6 +21,21 @@ export default function Weather(props){
         })
     }
 
+    function search(){
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ae3ffbb2ba5fd172289cc56d929ac85e`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        search();
+    }
+
+    function changeCity(event) {
+        event.preventDefault();
+        setCity(event.target.value);
+    }
+
     if (weatherData.ready) {
     return (
         <div className="card">
@@ -27,7 +43,7 @@ export default function Weather(props){
             <h1 className="fw-bold">What's the weather in ...?</h1>
             <div className="row" id="search-bar">
                 <div className="col-10">
-                    <form className="search-form" id="search-form">
+                    <form className="search-form" id="search-form" onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="col-10">
                         <div className="mb-3">
@@ -35,7 +51,9 @@ export default function Weather(props){
                             type="text"
                             className="form-control"
                             placeholder="Enter a city..."
+                            autoFocus="on"
                             id="search-city"
+                            onChange={changeCity}
                             />
                         </div>
                         </div>
@@ -51,55 +69,13 @@ export default function Weather(props){
                     </form>
                 </div>
                 </div>
-                <h2 className="fw-bold">
-              <span id="city">{weatherData.city}</span>, <span id="country">{weatherData.country}</span>
-            </h2>
-            <ul>
-                <li>
-                    <FormattedDate date={weatherData.date} />
-                </li>
-                <li className="text-capitalize">
-                    {weatherData.description}
-                </li>
-            </ul>
-            <div className="row">
-              <div className="col-6">
-                <img
-                  src={weatherData.icon}
-                  alt={weatherData.description}
-                  className="float-start"
-                  id="icon"
-                />
-                <div className="float-start">
-                  <span id="temperature">{Math.round(weatherData.temperature)}</span>
-                  <span id="units">
-                    <span href="#" id="celcius">
-                      °C
-                    </span>
-                    |
-                    <span href="#" id="fahrenheit">
-                      °F
-                    </span>
-                  </span>
+                <WeatherData data={weatherData}/>
                 </div>
-              </div>
-              <div className="col-6">
-              <div id="indicators">
-                <strong>Feels like</strong>: {Math.round(weatherData.feelsLike)}°C
-                <br />
-                <strong>Humidity</strong>: <span>{weatherData.humidity}</span>%
-                <br />
-                <strong>Wind </strong>: <span>{Math.round(weatherData.wind)}</span>km/h
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
     )
     } else {
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&units=metric&appid=ae3ffbb2ba5fd172289cc56d929ac85e`;
-        axios.get(apiUrl).then(handleResponse);
+        search();
 
-        return "Loading..."
+        return "Loading...";
     }
 }
