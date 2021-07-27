@@ -1,1 +1,72 @@
-
+h1 {
+    margin: 20px 30px;
+    font-weight: 900;
+  }
+  
+  h2, .date {
+    font-weight: 700;
+    margin-left: 30px;
+  }
+  
+  .App .card {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    color: #364e68;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 800px;
+    background: linear-gradient(
+      178deg,
+      rgba(201, 234, 252, 0.51) 14.9%,
+      rgba(139, 192, 216, 0.73) 80%
+    );
+    border: none;
+    border-radius: 20px;
+    box-shadow: 10px 20px 20px rgb(54, 78, 104, 0.5);
+  }
+  
+  .App .card-body {
+    margin: 20px;
+    padding: 50px 20px;
+  }
+  
+  .App #search-bar {
+    margin: 10px 0px;
+  }
+  
+  .App #search-city {
+    box-shadow: 2px 2px 2px rgb(54, 78, 104, 0.1);
+    border-radius: 20px;
+  }
+  
+  .App #check-btn {
+    background: rgb(54, 78, 104);
+    border: none;
+    box-shadow: 4px 4px 4px rgb(54, 78, 104, 0.1);
+    transition: all 200ms ease-in-out;
+    border-radius: 20px;
+  }
+  
+  .App #check-btn:hover {
+    background: #132238;
+  }
+  
+  .App #icon {
+    width: 70px;
+    margin: 10px 10px;
+  }
+  
+  .App #temperature {
+    font-size: 80px;
+  }
+  
+  .App #units {
+    position: relative;
+    top: -45px;
+  }
+  
+  .App #indicators {
+    font-size: 15px;
+    margin: 30px 0px;
+  }
