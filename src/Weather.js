@@ -15,7 +15,7 @@ export default function Weather(props){
             wind: response.data.wind.speed,
             feelsLike: response.data.main.feels_like,
             humidity: response.data.main.humidity,
-            icon: "https://www.pikpng.com/pngl/b/190-1909381_weather-symbols-png-weather-symbol-vector-free-clipart.png",
+            icon: response.data.weather[0].icon,
             description: response.data.weather[0].description,
             date: new Date(response.data.dt * 1000)
         })
@@ -42,7 +42,6 @@ export default function Weather(props){
           <div className="card-body">
             <h1 className="fw-bold">What's the weather in ...?</h1>
             <div className="row" id="search-bar">
-                <div className="col-10">
                     <form className="search-form" id="search-form" onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="col-10">
@@ -67,7 +66,6 @@ export default function Weather(props){
                         </div>
                     </div>
                     </form>
-                </div>
                 </div>
                 <WeatherData data={weatherData}/>
                 </div>

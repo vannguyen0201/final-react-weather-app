@@ -53,24 +53,30 @@ h1 {
   }
   
   .App li {
-      list-style: none;
+    list-style: none;
+  }
+
+  .App .weatherData {
+    margin-left: 20px;
   }
 
   .App #icon {
     width: 100px;
-    margin: 10px 10px;
+    margin-top: 50px;
   }
   
   .App #temperature {
     font-size: 80px;
+    line-height: 80px;
+    margin-left: 10px;
   }
   
   .App #units {
     position: relative;
     top: -45px;
   }
-  
+
   .App #indicators {
     font-size: 15px;
-    margin: 30px 0px;
+    margin: 0;
   }
