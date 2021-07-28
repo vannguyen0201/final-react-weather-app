@@ -80,3 +80,7 @@ h1 {
     font-size: 15px;
     margin: 0;
   }
+
+  .App .signature {
+    text-align: center;
+  }
