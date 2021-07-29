@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WeatherForecastDay from "./WeatherForecastDay";
 import "./WeatherForecast.css";
 import axios from "axios";
@@ -12,18 +12,30 @@ export default function WeatherForecast(props) {
         setLoaded(true)
     }
 
+    useEffect(() => {
+        setLoaded(false);
+    }, [props.data]);
+
     if (loaded) {
         return (
             <div className="row mt-5 weather-forecast">
-                <div className="col-sm forecast-day">
-                    <WeatherForecastDay data={forecastData[0]} />
-                </div>
+                    {forecastData.map(function (dailyForecast, index) {
+                        if (index < 6) {
+                        return (
+                            <div className="col-sm forecast-day" key={index}>
+                                <WeatherForecastDay data={dailyForecast} />
+                            </div>
+                        );
+                        } else {
+                            return null;
+                        }
+                    })} 
             </div>
         );
     } else {}
 
 
-    let apiKey = "ae3ffbb2ba5fd172289cc56d929ac85e";
+    let apiKey = "5053a5d33399f0e64b5f308e6f69361b";
     let latitude = props.data.lat;
     let longitude = props.data.lon;
     let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
