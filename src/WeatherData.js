@@ -9,7 +9,7 @@ export default function WeatherData(props) {
             <h2 className="fw-bold">
               <span id="city">{props.data.city}</span>, <span id="country">{props.data.country}</span>
             </h2>
-            <ul>
+            <ul className="mb-3">
                 <li>
                     <FormattedDate date={props.data.date} />
                 </li>

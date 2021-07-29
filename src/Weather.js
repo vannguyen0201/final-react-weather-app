@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import WeatherData from "./WeatherData";
 import WeatherForecast from "./WeatherForecast";
+import Loader from "react-loader-spinner";
 import axios from "axios";
 
 export default function Weather(props){
@@ -46,7 +47,7 @@ export default function Weather(props){
             <div className="row" id="search-bar">
                     <form className="search-form" id="search-form" onSubmit={handleSubmit}>
                     <div className="row">
-                        <div className="col-10">
+                        <div className="col-sm-10">
                         <div className="mb-3">
                             <input
                             type="text"
@@ -58,7 +59,7 @@ export default function Weather(props){
                             />
                         </div>
                         </div>
-                        <div className="col-2">
+                        <div className="col-sm-2">
                         <input
                             type="submit"
                             className="btn btn-primary"
@@ -77,6 +78,15 @@ export default function Weather(props){
     } else {
         search();
 
-        return "Loading...";
+        return (
+            <Loader
+                className="loading"
+                type="Puff"
+                color="#364e68"
+                height={100}
+                width={100}
+                timeout={3000} //3 secs
+            />
+          );
     }
 }

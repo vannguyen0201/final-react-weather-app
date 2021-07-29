@@ -1,14 +1,18 @@
+body {
+  background-image: url(./background.jpeg);
+}
+
 h1 {
     margin: 20px 30px;
     font-weight: 900;
   }
   
-  h2 {
+h2 {
     font-weight: 700;
     margin-left: 30px;
   }
   
-  .App .card {
+.App .card {
     font-family: "Nunito", sans-serif;
     font-weight: 600;
     color: #364e68;
@@ -24,63 +28,94 @@ h1 {
     border: none;
     border-radius: 20px;
     box-shadow: 10px 20px 20px rgb(54, 78, 104, 0.5);
-  }
+}
   
-  .App .card-body {
+.App .card-body {
     margin: 20px;
     padding: 50px 20px;
-  }
+}
   
-  .App #search-bar {
+.App #search-bar {
     margin: 10px 0px;
-  }
+}
   
-  .App #search-city {
+.App #search-city {
     box-shadow: 2px 2px 2px rgb(54, 78, 104, 0.1);
     border-radius: 20px;
-  }
+}
   
-  .App #check-btn {
+.App #check-btn {
     background: rgb(54, 78, 104);
     border: none;
     box-shadow: 4px 4px 4px rgb(54, 78, 104, 0.1);
     transition: all 200ms ease-in-out;
     border-radius: 20px;
-  }
+}
   
-  .App #check-btn:hover {
+.App #check-btn:hover {
     background: #132238;
-  }
+}
   
-  .App li {
+.App li {
     list-style: none;
-  }
+}
 
-  .App .weatherData {
+.App .weatherData {
     margin-left: 20px;
-  }
+}
 
-  .App #icon {
+.App #icon {
     width: 100px;
     margin-top: 50px;
-  }
+}
   
-  .App #temperature {
+.App #temperature {
     font-size: 80px;
     line-height: 80px;
     margin-left: 10px;
-  }
+}
   
-  .App #units {
+.App #units {
     position: relative;
     top: -45px;
   }
 
-  .App #indicators {
+.App #indicators {
     font-size: 15px;
     margin: 0;
+}
+
+.App .signature {
+    text-align: center;
+}
+
+.App .loading {
+    text-align: center;
+    padding: 100px;
+}
+
+@media (max-width: 576px) {
+  h2 {
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 30px;
   }
 
-  .App .signature {
-    text-align: center;
+  .App .card {
+    margin-top: 50px;
   }
+  
+  .App .card-body {
+    padding: 50px 0;
+  }
+  
+  .App #search-bar {
+    margin: 20px;
+  }
+
+  .App #check-btn {
+    display: block;
+    margin: 0 auto;
+  }
+
+}

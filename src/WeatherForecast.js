@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WeatherForecastDay from "./WeatherForecastDay";
+import Loader from "react-loader-spinner";
 import "./WeatherForecast.css";
 import axios from "axios";
 
@@ -18,7 +19,7 @@ export default function WeatherForecast(props) {
 
     if (loaded) {
         return (
-            <div className="row mt-5 weather-forecast">
+            <div className="row mt-5 weather-forecast p-2">
                     {forecastData.map(function (dailyForecast, index) {
                         if (index < 6) {
                         return (
@@ -41,5 +42,14 @@ export default function WeatherForecast(props) {
     let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
     axios.get(apiURL).then(displayForecast);
 
-    return null;
+    return (
+        <Loader
+            className="forecast-loading"
+            type="ThreeDots"
+            color="#364e68"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+        />
+      );;
 }

@@ -25,3 +25,7 @@
 .forecast-icon {
     margin: 10px;
 }
+
+.forecast-loading {
+    text-align: center;
+}

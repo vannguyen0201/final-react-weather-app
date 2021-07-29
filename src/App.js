@@ -6,8 +6,8 @@ function App() {
     <div className="App">
       <div className="container">
       <Weather defaultCity="Melbourne,AU"/>
-      <div className="signature">
-        <a href="https://github.com/vannguyen0201/final-react-weather-app" target="_blank" rel="noreferrer">Open-source code</a> by LittleVan
+      <div className="signature p-2">
+        ☀️ <a href="https://github.com/vannguyen0201/final-react-weather-app" target="_blank" rel="noreferrer">Open-source code</a> by LittleVan 🌈
       </div>
       </div>
     </div>
