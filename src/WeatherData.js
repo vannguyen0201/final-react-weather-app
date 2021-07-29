@@ -20,10 +20,11 @@ export default function WeatherData(props) {
             <div className="row weatherData">
               <div className="col-sm-6">
                 <div className="float-start">
-                <WeatherIcon icon={props.data.icon} id="icon"/>
+                <WeatherIcon icon={props.data.icon} size="80" id="icon"/>
                 </div>
                 <div className="float-start">
                   <WeatherTemp celsius={props.data.temperature} />
+                  
                 </div>
               </div>
               <div className="col-sm-6">

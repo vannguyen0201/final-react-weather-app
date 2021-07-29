@@ -1,0 +1,27 @@
+.weather-forecast {
+    text-align: center;
+}
+
+.forecast-day {
+    transition: all 200ms ease-in-out;
+    border-radius: 20px;
+}
+
+.forecast-day:hover {
+    background: rgba(201, 234, 252);
+    box-shadow: 4px 4px 4px rgb(54,78,104, 0.1);;
+}
+
+.day-of-week {
+    opacity: 0.8;
+    font-size: 20px;
+}
+
+.forecast-min-temp {
+    opacity: 0.8;
+    
+}
+
+.forecast-icon {
+    margin: 10px;
+}
